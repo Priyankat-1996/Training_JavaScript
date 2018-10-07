@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Biodata</title>
+
+</head>
+<body>
+<h1 style="text-align: center">Biodata of Employee </h1>
+    <table cellpadding="2" cellspacing="2"  bgcolor="#dfdfdf" width="50%" align="center" id="table">
+        <thead> 
+            <tr style="text-align: center" bgcolor="Red">
+                <th style="width: 30%">First Name</th>
+                <th style="width: 30%">Last Name</th>
+                <th>Age</th>
+                <th style="width: 30%">City</th>
+                <th style="width: 40%">Contact Number</th>
+            </tr>
+        </thead>
+            <tbody id="tableData"></tbody>
+        </table>
+        <h2>Display Information</h2>
+        Firstname is:<p id="firstname"></p>
+        Lastname is:<p id="lastname"></p>
+        Age is:<p id="age"></p>
+        City is:<p id="city"></p>
+        Contact is:<p id="contact"></p>
+        
+        <script language="javascript" type="text/javascript">
+            //var mainObj =new Array();
+            
+            var mainObj = [
+                {
+                    firstname: "Priyanka",
+                    lastname: "Thakur",
+                    age:  22,
+                    city: "Nashik",
+                    contact: 1234567890
+                },
+                {
+                    firstname: "Mayur",
+                    lastname: "Warikar",
+                    age:  26,
+                    city: "Mumbai",
+                    contact: 2345678910
+                },
+                {
+                    firstname: "Puja",
+                    lastname: "Yerva",
+                    age:  21,
+                    city: "Pune",
+                    contact: 5678901234
+                }
+            ];
+            table = document.getElementById("table");
+            var k = '<tbody>'
+            for(i = 0;i < mainObj.length; i++)
+            {
+                k+= '<tr id="abc" onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)" onclick="javascript:showRow(this);">';
+                k+= '<td >' + mainObj[i].firstname + '</td>';
+                k+= '<td>' + mainObj[i].lastname + '</td>';
+                k+= '<td>' + mainObj[i].age + '</td>';
+                k+= '<td>' + mainObj[i].city + '</td>';
+                k+= '<td>' + mainObj[i].contact + '</td>';
+                k+= '</tr>';
+            }
+            k+='</tbody>';
+                
+            document.getElementById('tableData').innerHTML = k;
+            var TableBackgroundNormalColor = "#ffffff";
+            var TableBackgroundMouseoverColor = "#9999ff";
+            function ChangeBackgroundColor(row) { row.style.backgroundColor = TableBackgroundMouseoverColor; }
+            function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+            function showRow(row)
+            {
+                var x=row.cells;
+                document.getElementById("firstname").innerHTML = x[0].innerHTML;
+                document.getElementById("lastname").innerHTML = x[1].innerHTML;
+                document.getElementById("age").innerHTML = x[2].innerHTML;
+                document.getElementById("city").innerHTML = x[3].innerHTML;
+                document.getElementById("contact").innerHTML = x[4].innerHTML;
+               
+            }
+        </script>
+</body>
+</html>
